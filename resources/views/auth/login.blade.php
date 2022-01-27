@@ -38,9 +38,21 @@
                 </a>
             </div>
             <div class="card-body">
-                <form>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    @method('POST')
+                    @error('email')
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    @error('password')
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
+                    @enderror
                     <div class="form-group">
-                        <input class="form-control form-control-lg" id="email" type="email" placeholder="Email"
+                        <input class="form-control form-control-lg" id="email" type="text" placeholder="Email"
                             autocomplete="off" name="email">
                     </div>
                     <div class="form-group">

@@ -30,26 +30,42 @@
 </head>
 
 <body>
-    <form class="splash-container">
+    <form class="splash-container" action="{{ route('register') }}" method="POST">
+        @csrf
+        @method('POST')
         <div class="card rounded">
             <div class="card-header">
                 Registration <a href="{{ route('welcome') }}">E-BILLING</a>
             </div>
             <div class="card-body">
+                @error('nama')
+                    <div class="alert alert-danger" role="alert">
+                        {{ $message }}
+                    </div>
+                @enderror
+                @error('password')
+                    <div class="alert alert-danger" role="alert">
+                        {{ $message }}
+                    </div>
+                @enderror
+                @error('email')
+                    <div class="alert alert-danger" role="alert">
+                        {{ $message }}
+                    </div>
+                @enderror
                 <div class="form-group">
-                    <input class="form-control form-control-lg" type="text" name="name" required placeholder="Your Name"
-                        autocomplete="off">
+                    <input class="form-control form-control-lg" type="text" name="nama" required placeholder="Your Name">
                 </div>
                 <div class="form-group">
                     <input class="form-control form-control-lg" type="email" name="email" required=""
-                        placeholder="Your E-mail" autocomplete="off">
+                        placeholder="Your E-mail">
                 </div>
                 <div class="form-group">
                     <input class="form-control form-control-lg" name="password" type="password" required=""
                         placeholder="Your Password">
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" required placeholder="Confirm Password"
+                    <input class="form-control form-control-lg" type="password" required placeholder="Confirm Password"
                         name="password_confirmation">
                 </div>
                 <div class="form-group pt-2">
