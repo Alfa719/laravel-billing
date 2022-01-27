@@ -102,30 +102,45 @@
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <!-- Button -->
-                @if (Route::has('login'))
-                    <a class="navbar-btn btn btn-sm btn-primary d-none d-md-inline-block ml-auto"
-                        href="{{ route('login') }}">
-                        Sign In
+                @auth()
+                    <a class="navbar-btn btn btn-sm btn-outline-info ml-auto d-none d-md-inline-block"
+                        href="{{ route('user.dashboard') }}">
+                        Dashboard
                     </a>
-                @endif
-                @if (Route::has('register'))
-                    <a class="navbar-btn btn btn-sm btn-warning d-none d-md-inline-block"
-                        href="{{ route('register') }}">
-                        Register
-                    </a>
-                @endif
-                <!-- Mobile button -->
-                <div class="d-lg-none d-md-none text-center">
+                @else
                     @if (Route::has('login'))
-                        <a class="btn btn-sm btn-primary my-1" href="{{ route('login') }}">
+                        <a class="navbar-btn btn btn-sm btn-primary d-none d-md-inline-block ml-auto"
+                            href="{{ route('login') }}">
                             Sign In
                         </a>
                     @endif
                     @if (Route::has('register'))
-                        <a class="btn btn-sm btn-primary my-1" href="{{ route('register') }}">
+                        <a class="navbar-btn btn btn-sm btn-warning d-none d-md-inline-block"
+                            href="{{ route('register') }}">
                             Register
                         </a>
                     @endif
+                @endauth
+                <!-- Mobile button -->
+                <div class="d-lg-none d-md-none text-center">
+                    @auth()
+                        <a class="btn btn-sm btn-block btn-outline-primary my-1" href="{{ route('user.dashboard') }}">
+                            Dashboard
+                        </a>
+                    @else
+                        @if (Route::has('login'))
+                            <a class="btn btn-sm btn-primary my-1" href="{{ route('login') }}">
+                                Sign In
+                            </a>
+                        @endif
+                        @if (Route::has('register'))
+                            <a class="btn btn-sm btn-primary my-1" href="{{ route('register') }}">
+                                Register
+                            </a>
+                        @endif
+                    @endauth
+
+
                 </div>
             </div>
         </div>
