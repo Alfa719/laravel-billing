@@ -10,16 +10,9 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AdminController extends Controller
 {
-    use AuthenticatesUsers;
-
-    protected function guard()
-    {
-        return Auth::guard('admin');
-    }
-
     public function login(Request $request)
     {
-        
+        return view('admin.auth.login');
     }
     public function verifyUser()
     {

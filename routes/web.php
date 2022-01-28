@@ -8,9 +8,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::view('/', 'welcome')->name('welcome');
 
+#Route Auth Admin
+Route::view('admin/login', 'admin.auth.login')->name('admin.login')->middleware('guest');
+Route::post('admin/login', [AdminController::class, 'login']);
+
+
 Route::middleware(['auth', 'role:superadmin'])->prefix('admin')->group(function() {
     Route::get('user-verification', [AdminController::class, 'verifyUser'])->name('admin.user.verification');
 });
 Route::middleware('auth')->group(function(){
-    Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
 });
