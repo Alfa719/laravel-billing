@@ -24,7 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'jenis_kelamin',
         'latitude',
-        'longtitude',
+        'longitude',
         'nik',
         'foto_ktp',
         'foto_user_ktp',

@@ -70,14 +70,17 @@
             <span class="sr-only">Loading...</span>
         </div>
     </div>
-    <a href="{{ route('welcome') }}" class="btn btn-white btn-icon-only rounded-circle position-absolute zindex-101 left-4 top-4 d-none d-lg-inline-flex" data-toggle="tooltip" data-placement="right" title="Go back">
+    <a href="{{ route('welcome') }}"
+        class="btn btn-white btn-icon-only rounded-circle position-absolute zindex-101 left-4 top-4 d-none d-lg-inline-flex"
+        data-toggle="tooltip" data-placement="right" title="Go back">
         <span class="btn-inner--icon">
             <i data-feather="arrow-left"></i>
         </span>
     </a>
     <!-- Side cover login -->
     <section>
-        <div class="bg-primary position-absolute h-100 top-0 left-0 zindex-100 col-lg-6 col-xl-6 zindex-100 d-none d-lg-flex flex-column justify-content-end" data-bg-size="cover" data-bg-position="center">
+        <div class="bg-primary position-absolute h-100 top-0 left-0 zindex-100 col-lg-6 col-xl-6 zindex-100 d-none d-lg-flex flex-column justify-content-end"
+            data-bg-size="cover" data-bg-position="center">
             <!-- Cover image -->
             <img src="assets/img/theme/light/img-v-2.jpg" alt="Image" class="img-as-bg">
             <!-- Overlay text -->
@@ -105,22 +108,43 @@
                                 <form action="{{ route('register') }}" method="POST">
                                     @csrf
                                     @method('POST')
+                                    @error('nama')
+                                        <div class="alert alert-danger alert-dismissible fade show text-sm ml-auto" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @enderror
+                                    @error('email')
+                                        <div class="alert alert-danger alert-dismissible fade show text-sm ml-auto" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @enderror
+                                    @error('password')
+                                        <div class="alert alert-danger alert-dismissible fade show text-sm ml-auto" role="alert">
+                                            {{ $message }}
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @enderror
                                     <div class="form-group">
                                         <label class="form-control-label">Name</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i data-feather="user"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Your Name" name="nama" autocomplete="off" required>
+                                            <input type="text" class="form-control" placeholder="Your Name"
+                                                name="nama" autocomplete="off" required>
                                         </div>
-                                        @error('nama')
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <strong>Warning! </strong>{{ $message }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        @enderror
+
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label">Email address</label>
@@ -128,16 +152,10 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i data-feather="mail"></i></span>
                                             </div>
-                                            <input type="email" class="form-control" placeholder="name@example.com" name="email" autocomplete="off" required>
+                                            <input type="email" class="form-control" placeholder="name@example.com"
+                                                name="email" autocomplete="off" required>
                                         </div>
-                                        @error('email')
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <strong>Warning! </strong>{{ $message }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        @enderror
+
                                     </div>
                                     <div class="form-group">
                                         <div class="d-flex align-items-center justify-content-between">
@@ -147,16 +165,10 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i data-feather="key"></i></span>
                                             </div>
-                                            <input type="password" class="form-control" name="password" placeholder="Password" autocomplete="off" required>
+                                            <input type="password" class="form-control" name="password"
+                                                placeholder="Password" autocomplete="off" required>
                                         </div>
-                                        @error('password')
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <strong>Warning! </strong>{{ $message }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        @enderror
+
                                     </div>
                                     <div class="form-group">
                                         <div class="d-flex align-items-center justify-content-between">
@@ -166,13 +178,15 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i data-feather="key"></i></span>
                                             </div>
-                                            <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" autocomplete="off" required>
+                                            <input type="password" class="form-control" name="password_confirmation"
+                                                placeholder="Confirm Password" autocomplete="off" required>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-block btn-primary">Register</button>
                                 </form>
                                 <div class="py-3 text-center">
-                                    <span class="text-sm text-capitalize">Already have an account ? <a href="{{ route('login') }}">Login Here!</a></span>
+                                    <span class="text-sm text-capitalize">Already have an account ? <a
+                                            href="{{ route('login') }}">Login Here!</a></span>
                                 </div>
                             </div>
                         </div>
