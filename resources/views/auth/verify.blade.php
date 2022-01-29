@@ -69,22 +69,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    Hello From Dashboard User.
-                    <a href="dropdown_user_account">Account</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown_user_account">
-                        <h6 class="dropdown-header">User menu</h6>
-                        <a class="dropdown-item" href="#">
-                            <span class="float-right badge badge-primary">4</span>
-                            <i class="fas fa-envelope text-primary"></i>Messages
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-cog text-primary"></i>Settings
-                        </a>
-                        <div class="dropdown-divider" role="presentation"></div>
-                        <a class="dropdown-item" href="#">
-                            <i class="fas fa-sign-out-alt text-primary"></i>Sign out
-                        </a>
-                    </div>
+                    @if (session('resent'))
+                        <div class="alert alert-warning" role="alert">
+                            <strong>Your verification link has been resent to your email address!</strong>
+                        </div>
+                    @else
+                        <div class="alert alert-danger" role="alert">
+                            <strong>A fresh verification link has been sent to your email address!</strong>
+                            <form action="{{ route('verification.resend') }}" method="post" class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-link p-0 m-0 align-baseline text-dark text-sm">Click here to resent verification!</button>
+                            </form>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

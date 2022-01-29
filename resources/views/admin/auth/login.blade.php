@@ -66,6 +66,10 @@
     </div>
     <script src="{{ asset('admin/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+    <br>
+    <h3>
+        Hello Nurul
+    </h3>
 </body>
 
 </html>
