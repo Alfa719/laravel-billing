@@ -11,30 +11,29 @@ class UserController extends Controller
 {
     public function index()
     {
-        // $user = Auth::user();
-        // if ($user->gambar == null || $user->jenis_kelamin == null || $user->latitude == null || $user->longitude == null) {
-        //     return redirect()->route('user.profile')->with('message', "Silakan lengkapi identitas anda!");
-        // }
-        // else if ($user->nik == null || $user->foto_ktp == null || $user->foto_user_ktp == null) {
-        //     return redirect()->route('user.profile')->with('message', "Silakan lengkapi data diri anda!");
-        // }
+        $user = Auth::user();
+        if ($user->gambar == null || $user->jenis_kelamin == null || $user->latitude == null || $user->longitude == null) {
+            return redirect()->route('user.profile')->with('message', "Silakan lengkapi identitas anda!");
+        }
+        else if ($user->nik == null || $user->foto_ktp == null || $user->foto_user_ktp == null) {
+            return redirect()->route('user.profile')->with('message', "Silakan update data diri anda!");
+        }
         return view('user.dashboard');
     }
-    public function store(Request $request)
+    public function updateprofile(User $user, Request $request)
     {
         $data = $request->validate([
-            'gambar' => 'required|image',
             'nama'=> 'required',
-            'email' => 'email|required',
-            'password' => 'required',
             'jenis_kelamin' => 'required',
-            'latitude' => 'numeric|required',
-            'longitude' => 'numeric|required',
-            'nik' => 'numeric|required',
-            'foto_ktp' => 'required',
-            'foto_user_ktp' => 'required'
+            'latitude' => 'required',
+            'longitude' => 'required'
         ]);
-        $data['status'] = 'check';
-        User::create($data);
+        $user->update($data);
+        return redirect()->route('user.profile')->with('message', "Silakan update data anda!");
+    }
+    public function profile()
+    {
+        $message = "Silakan perbarui profil anda!";
+        return view('user.profile', compact('message'));
     }
 }

@@ -18,4 +18,6 @@ Route::middleware(['auth', 'role:superadmin'])->prefix('admin')->group(function(
 });
 Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::put('profile/{user}', [UserController::class, 'updateprofile'])->name('user.profile.update');
 });

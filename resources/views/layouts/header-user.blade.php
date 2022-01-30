@@ -37,7 +37,7 @@
     body.loaded>div.preloader {
         animation: hidePreloader .5s linear .5s forwards;
     }
-
+    @stack('styles')
 </style>
 <script>
     window.addEventListener("load", function() {

@@ -12,3 +12,4 @@
         'height': '1em'
     })
 </script>
+@stack('scripts')

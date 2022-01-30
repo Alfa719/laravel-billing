@@ -70,7 +70,6 @@
             <span class="sr-only">Loading...</span>
         </div>
     </div>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light bg-white">
         <div class="container">
             <!-- Brand -->
@@ -117,7 +116,7 @@
                             </a>
                         @endif
                         @if (Route::has('register'))
-                            <a class="btn btn-sm btn-primary my-1" href="{{ route('register') }}">
+                            <a class="btn btn-sm btn-warning my-1" href="{{ route('register') }}">
                                 Register
                             </a>
                         @endif
