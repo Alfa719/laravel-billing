@@ -24,7 +24,7 @@
                             <span class="float-right badge badge-primary">4</span>
                             <i class="fas fa-envelope text-primary"></i>Messages
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('user.profile') }}">
                             <i class="fas fa-cog text-primary"></i>Settings
                         </a>
                         <div class="dropdown-divider" role="presentation"></div>

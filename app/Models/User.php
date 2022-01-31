@@ -12,11 +12,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'gambar',
         'nama',
@@ -25,6 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'jenis_kelamin',
         'latitude',
         'longitude',
+        'nomor_hp',
         'nik',
         'foto_ktp',
         'foto_user_ktp',

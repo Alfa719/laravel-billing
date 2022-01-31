@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
+            $table->string('nomor_hp', 13)->nullable();
             $table->string('nik')->nullable();
             $table->string('foto_ktp')->nullable();
             $table->string('foto_user_ktp')->nullable();

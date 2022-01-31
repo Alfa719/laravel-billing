@@ -11,8 +11,13 @@
     @include('layouts.header-user')
 </head>
 
-<body>
+<body class="bg-translucent-secondary">
     <x-navbar-user></x-navbar-user>
+    @if (Auth::user()->status === 'check')
+        <div class="alert alert-warning alert-flush" role="alert">
+            <strong>Peringatan!</strong> Akun anda sedang dalam proses pengecekan admin! Silakan cek kembali data anda!
+        </div>
+    @endif
     @yield('content')
     @include('layouts.footer-user')
 </body>

@@ -14,7 +14,7 @@ class AddAdminIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('admin_id')->constrained()->nullable();
+            $table->foreignId('admin_id')->constrained('admins')->nullable(true)->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

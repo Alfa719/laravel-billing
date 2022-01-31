@@ -2,13 +2,13 @@
 @section('title', 'E-Billing')
 
 @section('content')
-<div class="slice py-5">
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Choose Your Speed</h1>
-          <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-        </div>
+<div class="jumbotron jumbotron-fluid bg-light rounded-none">
+    <div class="container bg-light">
+        <h1 class="display-4">Fluid jumbotron</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
     </div>
+</div>
+<div class="slice py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-4 mx-auto">

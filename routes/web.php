@@ -20,4 +20,5 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
     Route::put('profile/{user}', [UserController::class, 'updateprofile'])->name('user.profile.update');
+    Route::put('profile/document/{user}', [UserController::class, 'updatedocument'])->name('user.document.update');
 });
